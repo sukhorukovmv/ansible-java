@@ -1,0 +1,8 @@
+molecule==3.3.4
+molecule-docker==0.2.4
+ansible==4.3.0
+ansible-core==2.11.3
+ansible-lint==5.1.2
+docker==5.0.0
+boto3==1.9.212
+python-vagrant=0.5.15
