@@ -4,3 +4,4 @@ ansible==4.3.0
 ansible-core==2.11.3
 ansible-lint==5.1.2
 docker==5.0.0
+flake8==3.8.4
