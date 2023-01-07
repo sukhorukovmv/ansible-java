@@ -46,7 +46,7 @@ libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl
 After you’ve installed the build dependencies, you’re ready to install pyenv itself.
 
 ```
-$ curl https://pyenv.run | bash
+curl https://pyenv.run | bash
 
 ```
 This will install pyenv along with a few plugins that are useful:
@@ -63,7 +63,7 @@ pyenv install --list | grep " 3\.[8]"
 
 Once you find the version you want, you can install it with a single command:
 ```
-$ pyenv install -v 3.8.16
+pyenv install -v 3.8.16
 ```
 
 Create virtual environment with pyenv:
@@ -101,8 +101,11 @@ If used ansible vault, write variable ANSIBLE_VAULT_PASSWORD_FILE. Example:
 ANSIBLE_VAULT_PASSWORD_FILE=$HOME/.vault.txt molecule converge
 ```
 
-# Molecule with vagrant libvirt
-## Installing KVM  with libvirt on Ubuntu 20.04
+# Molecule with vagrant for testing on KVM virtual machines
+Molecule’s default use Docker driver. That means if you want to test your role with Ubuntu 20.04 Molecule will instruct the Docker driver to launch a Docker container with Ubuntu 20.04.
+But there are times when you need to test on a "real" operating system.
+
+## Installing KVM with libvirt on Ubuntu 20.04
 Run the following command to install KVM and additional virtualization management packages:
 
 ```
