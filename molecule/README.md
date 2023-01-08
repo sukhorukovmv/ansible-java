@@ -66,6 +66,12 @@ Once you find the version you want, you can install it with a single command:
 pyenv install -v 3.8.16
 ```
 
+Each installed python version and virtual environments that you have is located in your pyenv root directory:
+```
+ls ~/.pyenv/versions/ #or
+pyenv versions
+```
+
 Create virtual environment with pyenv:
 ```
 pyenv virtualenv 3.8.16 ansible-role-java
@@ -76,6 +82,12 @@ For activate and deactivate Virtual Environment:
 pyenv activate ansible-role-java
 pyenv deactivate # or if not working
 pyenv shell system
+```
+
+Delete Virtual Environment:
+```
+pyenv versions
+pyenv uninstall 3.8.16/envs/ansible-role-java
 ```
 
 ## Run molecule tests
