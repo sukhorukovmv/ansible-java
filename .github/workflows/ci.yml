@@ -28,7 +28,7 @@ jobs:
 
       - name: Lint code.
         run: |
-          yamllint .
+          yamllint --config-file .yamllint .
 
   molecule:
     name: Molecule
