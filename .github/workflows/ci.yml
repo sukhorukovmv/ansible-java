@@ -13,7 +13,7 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the codebase.
+      - name: Check out the codebase
         uses: actions/checkout@v2
 
       - name: Set up Python 3
@@ -21,12 +21,16 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install test dependencies.
+      - name: Install test dependencies
         run: pip3 install yamllint
 
-      - name: Lint code.
+      - name: Yamllint
         run: |
           yamllint .
+
+      - name: Ansible-lint
+        run: |
+          ansible-lint .
 
   molecule:
     name: Molecule
@@ -42,7 +46,7 @@ jobs:
           - debian9
 
     steps:
-      - name: Check out the codebase.
+      - name: Check out the codebase
         uses: actions/checkout@v2
 
       - name: Set up Python 3
@@ -53,7 +57,7 @@ jobs:
       - name: Install dependencies.
         run: pip3 install -r ./molecule/requirements.txt
 
-      - name: Run Molecule tests.
+      - name: Run Molecule tests
         run: molecule test
         env:
           PY_COLORS: '1'
