@@ -107,6 +107,11 @@ Run scenario with verbose
 molecule converge -s scenario_name -- -vvv
 ```
 
+List status of instances
+```
+molecule list
+```
+
 ### Ansible vault
 If used ansible vault, write variable ANSIBLE_VAULT_PASSWORD_FILE. Example:
 ```

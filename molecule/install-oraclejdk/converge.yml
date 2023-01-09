@@ -1,0 +1,17 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+
+  vars:
+    oracle_jdk_install: false
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt:
+        update_cache: true
+      when: ansible_os_family == 'Debian'
+      changed_when: false
+
+  roles:
+    - {role: sukhorukovmv.java}
