@@ -4,7 +4,7 @@
   become: true
 
   vars:
-    oracle_jdk_install: false
+    java_oracle_jdk_install: true
 
   pre_tasks:
     - name: Update apt cache.

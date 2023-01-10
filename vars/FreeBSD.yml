@@ -4,4 +4,4 @@
 #   - openjdk6
 #   - openjdk8
 __java_packages:
-  - openjdk
+  - "openjdk{{ java_version }}"

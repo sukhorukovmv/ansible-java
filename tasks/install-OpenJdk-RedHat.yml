@@ -1,5 +1,5 @@
 ---
-- name: Ensure Java is installed
+- name: Istall OpenJdk {{ java_version }}
   ansible.builtin.package:
     name: "{{ java_packages }}"
     state: present

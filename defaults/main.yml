@@ -1,8 +1,10 @@
 ---
-oracle_jdk_install: false
-oracle_jdk_version: 1.8.0_181
-oracle_jdk_url: "http://nexus.mdlp.crpt.tech/repository/3rd-party/java/jdk/{{ oracle_jdk_version }}/jdk-{{ oracle_jdk_version }}.tar.gz"
-oracle_jdk_directory: "/opt"
+
+java_version: 8
+java_oracle_jdk_install: false
+java_oracle_jdk_version: 1.8.0_181
+java_oracle_jdk_url: "http://nexus.mdlp.crpt.tech/repository/3rd-party/java/jdk/{{ java_oracle_jdk_version }}/jdk-{{ java_oracle_jdk_version }}.tar.gz"
+java_oracle_jdk_directory: "/opt"
 
 # Set java_packages if you would like to use a different version than the
 # default for the OS (see defaults per OS in `vars` directory).

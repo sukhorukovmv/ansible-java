@@ -4,4 +4,4 @@
 #   - openjdk-11-jdk
 
 __java_packages:
-  - openjdk-11-jdk
+  - "openjdk-{{ java_version }}-jdk"

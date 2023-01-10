@@ -4,4 +4,4 @@
 #   - openjdk-8-jdk
 #   - openjdk-9-jdk
 __java_packages:
-  - openjdk-8-jdk
+  - "openjdk-{{ java_version }}-jdk"

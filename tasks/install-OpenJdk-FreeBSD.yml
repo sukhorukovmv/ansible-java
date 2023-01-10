@@ -1,5 +1,5 @@
 ---
-- name: Ensure Java is installed
+- name: Istall OpenJdk {{ java_version }}
   community.general.pkgng:
     name: "{{ java_packages }}"
     state: present
