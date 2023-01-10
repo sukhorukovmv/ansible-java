@@ -25,20 +25,20 @@
 # Setup/install tasks.
 - name: Install OpenJdk
   block:
-  - name: Install OpenJdk RedHat
-    ansible.builtin.include_tasks: install-OpenJdk-RedHat.yml
-    when:
-      - ansible_os_family == 'RedHat'
+    - name: Install OpenJdk RedHat
+      ansible.builtin.include_tasks: install-OpenJdk-RedHat.yml
+      when:
+        - ansible_os_family == 'RedHat'
 
-  - name: Install OpenJdk Debian
-    ansible.builtin.include_tasks: install-OpenJdk-Debian.yml
-    when:
-      - ansible_os_family == 'Debian'
+    - name: Install OpenJdk Debian
+      ansible.builtin.include_tasks: install-OpenJdk-Debian.yml
+      when:
+        - ansible_os_family == 'Debian'
 
-  - name: Install OpenJdk FreeBSD
-    ansible.builtin.include_tasks: install-OpenJdk-FreeBSD.yml
-    when:
-      - ansible_os_family == 'FreeBSD'
+    - name: Install OpenJdk FreeBSD
+      ansible.builtin.include_tasks: install-OpenJdk-FreeBSD.yml
+      when:
+        - ansible_os_family == 'FreeBSD'
   when: not java_oracle_jdk_install
 
 - name: Install OracleJDK
