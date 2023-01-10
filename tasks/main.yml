@@ -23,30 +23,26 @@
   when: java_packages is not defined
 
 # Setup/install tasks.
-- name: Setup RedHat
-  ansible.builtin.include_tasks: install-OpenJdk-RedHat.yml
-  when:
-    - ansible_os_family == 'RedHat'
-    - not java_oracle_jdk_install
+- name: Install OpenJdk
+  block:
+  - name: Install OpenJdk RedHat
+    ansible.builtin.include_tasks: install-OpenJdk-RedHat.yml
+    when:
+      - ansible_os_family == 'RedHat'
 
-- name: Setup Debian
-  ansible.builtin.include_tasks: install-OpenJdk-Debian.yml
-  when:
-    - ansible_os_family == 'Debian'
-    - not java_oracle_jdk_install
+  - name: Install OpenJdk Debian
+    ansible.builtin.include_tasks: install-OpenJdk-Debian.yml
+    when:
+      - ansible_os_family == 'Debian'
 
-- name: Setup FreeBSD
-  ansible.builtin.include_tasks: install-OpenJdk-FreeBSD.yml
-  when:
-    - ansible_os_family == 'FreeBSD'
-    - not java_oracle_jdk_install
+  - name: Install OpenJdk FreeBSD
+    ansible.builtin.include_tasks: install-OpenJdk-FreeBSD.yml
+    when:
+      - ansible_os_family == 'FreeBSD'
+  when: not java_oracle_jdk_install
 
-- name: Download and Extract oracle jdk archive to {{ java_oracle_jdk_directory }}
-  ansible.builtin.unarchive:
-    src: "{{ java_oracle_jdk_url }}"
-    dest: "{{ java_oracle_jdk_directory }}"
-    creates: "{{ java_oracle_jdk_directory }}/jdk{{ java_oracle_jdk_version }}"
-    remote_src: true
+- name: Install OracleJDK
+  ansible.builtin.include_tasks: install-OracleJdk.yml
   when: java_oracle_jdk_install
 
 # Environment setup.
