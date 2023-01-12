@@ -11,19 +11,19 @@
         validate_certs: false
   rescue:
     - name: Register if OracleJDK package exists locally
-      stat:
+      ansible.builtin.stat:
         path: "{{ java_oracle_jdk_package_local_path }}"
       register: result
       delegate_to: localhost
       run_once: true
 
     - name: Echo message and fail a task if file not exists
-      fail:
+      ansible.builtin.fail:
         msg: "You have to put a package locally and set environment java_oracle_jdk_package_local_path"
       when: not result.stat.exists
 
     - name: "Extract archive to {{ java_oracle_jdk_directory }}"
-      unarchive:
+      ansible.builtin.unarchive:
         src: "{{ java_oracle_jdk_package_local_path }}"
         dest: /opt
         creates: "{{ java_oracle_jdk_directory }}/jdk{{ java_oracle_jdk_version }}"
