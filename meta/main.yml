@@ -23,6 +23,12 @@ galaxy_info:
         - xenial
         - bionic
         - focal
+    - name: FreeBSD
+      versions:
+        - 10.2
+    - name: Centos
+      versions:
+        - 7.0
   galaxy_tags:
     - development
     - system
