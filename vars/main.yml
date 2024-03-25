@@ -1,0 +1,3 @@
+#---
+#
+#java_googledrive_apikey: "{{ lookup('env', 'JAVA_GOOGLEDRIVE_APIKEY') | default('AIzaSyB3Wqxg-d8QRu2_tMEIOlhde9vHw3EFcqg', true) }}" 
