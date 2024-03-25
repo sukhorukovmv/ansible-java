@@ -54,8 +54,15 @@ jobs:
       - name: Install dependencies.
         run: pip3 install -r ./molecule/requirements.txt
 
-      - name: Run Molecule tests
+      - name: Run Molecule tests (install openjdk)
         run: molecule test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
+
+      - name: Run Molecule tests (install oraclejdk)
+        run: molecule test -s install-oraclejdk
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
