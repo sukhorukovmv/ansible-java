@@ -58,6 +58,24 @@ For Ubuntu < 16.04:
           java_packages:
             - openjdk-8-jdk
 
+## Example Playbook (install OracleJDK 8)
+
+  vars:
+    java_oracle_jdk_install: true
+    java_version: 8
+    java_oracle_jdk_version: "1.{{ java_version }}.0_221"
+    java_oracle_jdk_url: "http://nexus/repository/repo/java/jdk/{{ java_oracle_jdk_version }}/jdk-{{ java_oracle_jdk_version }}.tar.gz"
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt:
+        update_cache: true
+      when: ansible_os_family == 'Debian'
+      changed_when: false
+
+  roles:
+    - {role: sukhorukovmv.java}
+
 ## License
 
 MIT / BSD
