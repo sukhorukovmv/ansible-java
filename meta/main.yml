@@ -15,7 +15,7 @@ galaxy_info:
         - focal
     - name: Centos
       versions:
-        - 7.0
+        - 7
   galaxy_tags:
     - development
     - system
