@@ -62,7 +62,7 @@ jobs:
           MOLECULE_DISTRO: ${{ matrix.distro }}
 
       - name: Run Molecule tests (install oraclejdk)
-        run: molecule test -s install-oraclejdk
+        run: molecule test -s install-oraclejdk -- --extra-vars "java_googledrive_apikey=${{ secrets.JAVA_GOOGLEDRIVE_APIKEY }}"
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'

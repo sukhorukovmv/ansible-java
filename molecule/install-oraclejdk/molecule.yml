@@ -7,12 +7,12 @@ driver:
 platforms:
   - name: instance
     image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
-    volumes:
+    volumes: # for systemd run
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     environment: {container: docker}
-    privileged: true
-    pre_build_image: true
+    privileged: true # also for systemd
+    pre_build_image: true # use builded image "geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
 
 provisioner:
   name: ansible
