@@ -6,6 +6,7 @@ java_oracle_jdk_version: "1.{{ java_version }}.0_221"
 # change java_oracle_jdk_url, example:
 java_oracle_jdk_url: "http://nexus/repository/repo/java/jdk/{{ java_oracle_jdk_version }}/jdk-{{ java_oracle_jdk_version }}.tar.gz"
 
+
 # Install oracleJdk from local path
 java_oracle_jdk_package_local_path: "{{ role_path }}/files/jdk-{{ java_oracle_jdk_version }}.tar.gz"
 java_oracle_jdk_directory: "/opt"
