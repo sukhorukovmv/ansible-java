@@ -4,9 +4,9 @@ name: Generate Release
 'on':
   pull_request:
     branches:
-    - master
+      - master
     types:
-    - closed
+      - closed
 jobs:
   generate_release:
     name: Release
