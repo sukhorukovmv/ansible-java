@@ -13,6 +13,7 @@ jobs:
       - name: Fetch version
         run: |
           VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\/v//")
+          echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`"
           echo echo ${GITHUB_REF:10}
           echo "tag=${GITHUB_REF#refs/*/}"
           echo "version=${VERSION}"
