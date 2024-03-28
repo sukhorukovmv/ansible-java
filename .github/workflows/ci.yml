@@ -10,6 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Fetch version
         run: |
           VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\/v//")
