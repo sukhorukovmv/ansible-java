@@ -10,15 +10,20 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Fetch version
-        run: |
-          ${{ toJson(github) }}
-          echo echo ${GITHUB_REF:10}
-          echo "tag=${GITHUB_REF#refs/*/}"
-          echo "version=${VERSION}"
-          echo "version=${VERSION}" >> $GITHUB_OUTPUT
-        id: fetch-version
+      - uses: actions/checkout@v1
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+        if: runner.os != 'Windows'
+      - name: Show GitHub ref
+        run: echo "$GITHUB_REF"
+        if: runner.os != 'Windows'
+      - name: Dump event JSON
+        env:
+          EVENT_JSON_FILENAME: ${{ github.event_path }}
+        run: cat "$EVENT_JSON_FILENAME"
+        if: runner.os != 'Windows'
 
   lint:
     name: Lint
