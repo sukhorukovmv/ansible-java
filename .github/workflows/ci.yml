@@ -10,12 +10,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      name: Fetch version
-      run: |
-        VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\/v//")
-        echo "version=${VERSION}"
-        echo "version=${VERSION}" >> $GITHUB_OUTPUT
-      id: fetch-version
+      - name: Fetch version
+        run: |
+          VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\/v//")
+          echo "version=${VERSION}"
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+        id: fetch-version
 
   lint:
     name: Lint
