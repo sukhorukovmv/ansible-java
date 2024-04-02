@@ -8,6 +8,7 @@ name: CI
 
 jobs:
   get_latest_tag:
+    name: Get latest tag
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
