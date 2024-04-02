@@ -66,10 +66,10 @@ jobs:
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
 
-  get_latest_tag:
-    name: Get latest tag
+  generate_release:
+    name: Generate release
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' && github.event.pull_request.merged == false
+    if: github.ref == 'refs/heads/master'
     needs: [lint] # , molecule]
     steps:
       - name: Checkout Code
