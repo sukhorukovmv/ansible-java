@@ -86,25 +86,3 @@ jobs:
       - name: View latest tag
         run: |
           echo ${{ steps.latest-tag.outputs.latest-tag }}
-  generate_release_from_branch:
-    name: Generate release from branch
-    if: contains(github.event.pull_request.head.ref, 'release/v') && github.event.pull_request.merged == true && github.event_name == 'pull_request' && github.event.action == 'closed'
-    # if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
-    needs: [lint]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Fetch version
-        run: |
-          VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\/v//")
-          echo "version=${VERSION}" >> $GITHUB_OUTPUT
-        id: fetch-version
-
-      - name: Generate release notes
-        uses: softprops/action-gh-release@v1
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-          tag_name: ${{ steps.fetch-version.outputs.version }}
-          generate_release_notes: true
