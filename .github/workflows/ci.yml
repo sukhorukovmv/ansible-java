@@ -7,7 +7,7 @@ name: CI
       - master
 
 jobs:
-  get latest tag:
+  get_latest_tag:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
