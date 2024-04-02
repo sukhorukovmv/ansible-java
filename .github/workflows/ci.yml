@@ -86,9 +86,6 @@ jobs:
       - name: View latest tag
         run: |
           echo ${{ steps.latest-tag.outputs.latest-tag }}
-
-
-
   generate_release_from_branch:
     name: Generate release from branch
     if: contains(github.event.pull_request.head.ref, 'release/v') && github.event.pull_request.merged == true && github.event_name == 'pull_request' && github.event.action == 'closed'
