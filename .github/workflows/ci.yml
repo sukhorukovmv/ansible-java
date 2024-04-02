@@ -85,3 +85,4 @@ jobs:
       - name: View latest tag
         run: |
           echo ${{ steps.latest-tag.outputs.latest-tag }}
+
