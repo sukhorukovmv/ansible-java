@@ -26,6 +26,8 @@ jobs:
       #   if: runner.os != 'Windows'
       #
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Fetch version
         run: |
           ls -al
