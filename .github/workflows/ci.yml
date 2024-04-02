@@ -13,10 +13,10 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-        # Only a single commit is fetched by default, for the ref/SHA that triggered the workflow. 
-        # Set fetch-depth: 0 to fetch all history for all branches and tags. 
+        # Only a single commit is fetched by default, for the ref/SHA that triggered the workflow.
+        # Set fetch-depth: 0 to fetch all history for all branches and tags.
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
       - name: Get latest tag
         run: |
           /usr/bin/git describe --tags --abbrev=0
