@@ -67,7 +67,7 @@ jobs:
           MOLECULE_DISTRO: ${{ matrix.distro }}
 
   get_latest_tag:
-    'on':
+    on:
       push:
         branches:
           - master
