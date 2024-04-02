@@ -29,6 +29,7 @@ jobs:
       - name: Fetch version
         run: |
           ls -al
+          git describe --tags --abbrev=0
           echo echo ${GITHUB_REF:10}
           echo "tag=${GITHUB_REF#refs/*/}"
           echo "version=${VERSION}"
