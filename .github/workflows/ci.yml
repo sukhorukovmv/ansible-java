@@ -28,7 +28,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Fetch version
         run: |
-          echo ${{ toJson(github) }}
           echo echo ${GITHUB_REF:10}
           echo "tag=${GITHUB_REF#refs/*/}"
           echo "version=${VERSION}"
