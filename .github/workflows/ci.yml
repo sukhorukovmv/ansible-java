@@ -30,7 +30,8 @@ jobs:
         run: |
           ls -al
           which git
-          git describe --tags --abbrev=0
+          /usr/bin/git status
+          /usr/bin/git describe --tags --abbrev=0
           echo echo ${GITHUB_REF:10}
           echo "tag=${GITHUB_REF#refs/*/}"
           echo "version=${VERSION}"
