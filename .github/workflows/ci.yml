@@ -81,3 +81,6 @@ jobs:
           LATEST_TAG=$(/usr/bin/git describe --tags --abbrev=0)
           echo "latest-tag=${LATEST_TAG}" >> $GITHUB_OUTPUT
         id: latest-tag
+      - name: View latest tag
+        run: |
+          echo ${{ steps.latest-tag.outputs.latest-tag }}
