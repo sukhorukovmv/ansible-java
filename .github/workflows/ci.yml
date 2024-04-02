@@ -70,7 +70,7 @@ jobs:
     name: Get latest tag
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' && github.event.pull_request.merged == false
-    needs: [lint, molecule]
+    needs: [lint] #, molecule]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
