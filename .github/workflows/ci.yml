@@ -78,5 +78,6 @@ jobs:
           fetch-depth: 0
       - name: Get latest tag
         run: |
-          /usr/bin/git describe --tags --abbrev=0 >> $GITHUB_OUTPUT
+          LATEST_TAG=$(/usr/bin/git describe --tags --abbrev=0)
+          echo "latest-tag=${LATEST_TAG}" >> $GITHUB_OUTPUT
         id: latest-tag
