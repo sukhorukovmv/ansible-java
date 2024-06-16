@@ -10,7 +10,7 @@ name: Generate Release
 jobs:
   generate_release:
     name: Release
-    if: contains(github.event.pull_request.head.ref, 'release/v') && github.event.pull_request.merged == true
+    if: contains(github.event.pull_request.head.ref, 'release/') && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -18,7 +18,7 @@ jobs:
 
       - name: Fetch version
         run: |
-          VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\/v//")
+          VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\///")
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
         id: fetch-version
 
