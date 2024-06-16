@@ -65,24 +65,3 @@ jobs:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
-
-  up_release:
-    name: Up release
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' && github.event_name == 'push' && github.event_name != 'pull_request'
-    needs: [lint]
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-        # Only a single commit is fetched by default, for the ref/SHA that triggered the workflow.
-        # Set fetch-depth: 0 to fetch all history for all branches and tags.
-        with:
-          fetch-depth: 0
-      - name: Get latest tag
-        run: |
-          LATEST_TAG=$(/usr/bin/git describe --tags --abbrev=0)
-          echo "latest-tag=${LATEST_TAG}" >> $GITHUB_OUTPUT
-        id: latest-tag
-      - name: View latest tag
-        run: |
-          echo ${{ steps.latest-tag.outputs.latest-tag }}
