@@ -82,4 +82,4 @@ For Ubuntu < 16.04:
 
 ## License
 
-MIT / BSD
+MIT
