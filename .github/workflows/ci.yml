@@ -9,18 +9,18 @@ name: CI
 jobs:
   lint:
     name: Lint
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out the codebase
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python 3
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
+          python-version: '3.12.5'
 
       - name: Install test dependencies
-        run: pip3 install yamllint ansible-lint==6.10.2
+        run: pip3 install yamllint ansible-lint
 
       - name: Yamllint
         run: |
@@ -32,13 +32,13 @@ jobs:
 
   molecule:
     name: Molecule
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         distro:
           - centos7
-          - ubuntu2004
-          - ubuntu1804
+          - ubuntu2404
+          - ubuntu2204
 
     steps:
       - name: Check out the codebase
