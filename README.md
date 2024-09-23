@@ -1,9 +1,9 @@
 # Ansible Role: Java
 
-[![CI](https://github.com/sukhorukovmv/ansible-role-containerd/workflows/CI/badge.svg)](https://github.com/sukhorukovmv/ansible-role-containerd/actions?query=workflow%CI)
-![Release](https://img.shields.io/github/v/release/sukhorukovmv/ansible-role-containerd)
-![Ansible Role](https://img.shields.io/ansible/role/d/sukhorukovmv/containerd)
-![License](https://img.shields.io/github/license/sukhorukovmv/ansible-role-containerd)
+[![CI](https://github.com/sukhorukovmv/ansible-role-java/workflows/CI/badge.svg)](https://github.com/sukhorukovmv/ansible-role-java/actions?query=workflow%CI)
+![Release](https://img.shields.io/github/v/release/sukhorukovmv/ansible-role-java)
+![Ansible Role](https://img.shields.io/ansible/role/d/sukhorukovmv/java)
+![License](https://img.shields.io/github/license/sukhorukovmv/ansible-role-java)
 
 
 Installs Java for RedHat/CentOS and Debian/Ubuntu linux servers.
