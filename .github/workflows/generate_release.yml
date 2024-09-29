@@ -10,13 +10,16 @@ name: Generate Release
     branches:
       - master
 
-stages:
-  - ci
-  - release
-
 jobs:
   generate_release:
     name: Release
+    on:
+      workflow_run:
+        workflows: ["CI"]
+        branches: [master]
+        types: 
+          - completed
+
     if: contains(github.event.pull_request.head.ref, 'release/') && github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
