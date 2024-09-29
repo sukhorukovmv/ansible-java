@@ -24,7 +24,7 @@ jobs:
       - name: Fetch version
         run: |
           if [ "${{ github.event_name }}" == "push" ]; then
-            VERSION=$(git describe --abbrev=0 --tags)
+            git describe --abbrev=0 --tags
             echo "test if"
             echo "${VERSION}"
           else
