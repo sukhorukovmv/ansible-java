@@ -32,10 +32,10 @@ jobs:
           echo "${VERSION}" 
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
         id: fetch-version
-
-      - name: Generate release notes
-        uses: softprops/action-gh-release@v1
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-          tag_name: ${{ steps.fetch-version.outputs.version }}
-          generate_release_notes: true
+      #
+      # - name: Generate release notes
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     token: ${{ secrets.ACCESS_TOKEN }}
+      #     tag_name: ${{ steps.fetch-version.outputs.version }}
+      #     generate_release_notes: true
