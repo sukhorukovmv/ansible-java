@@ -23,8 +23,12 @@ jobs:
 
       - name: Fetch version
         run: |
-          git describe --abbrev=0 --tags
-          VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\///")
+          if [ "${{ github.event_name }}" == "push" ]; then
+            # VERSION=$(git describe --abbrev=0 --tags)
+            echo "test if"
+          else
+            VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\///")
+          fi
           echo "${VERSION}" 
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
         id: fetch-version
