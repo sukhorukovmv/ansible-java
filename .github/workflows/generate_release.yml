@@ -1,5 +1,4 @@
 ---
-
 name: Generate Release
 'on':
   pull_request:
@@ -14,7 +13,6 @@ name: Generate Release
 jobs:
   generate_release:
     name: Release
-    # if: contains(github.event.pull_request.head.ref, 'release/') && github.event.pull_request.merged == true
     if: contains(github.event.pull_request.head.ref, 'release/') && github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
@@ -38,7 +36,7 @@ jobs:
         id: fetch-version
       
       - name: Generate release notes
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           tag_name: ${{ steps.fetch-version.outputs.version }}
