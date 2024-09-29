@@ -7,10 +7,15 @@ name: Generate Release
       - master
     types:
       - closed
+  push:
+    branches:
+      - master
+
 jobs:
   generate_release:
     name: Release
-    if: contains(github.event.pull_request.head.ref, 'release/') && github.event.pull_request.merged == true
+    # if: contains(github.event.pull_request.head.ref, 'release/') && github.event.pull_request.merged == true
+    if: contains(github.event.pull_request.head.ref, 'release/') && github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -18,7 +23,12 @@ jobs:
 
       - name: Fetch version
         run: |
-          VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\///")
+          if [ "${{ github.event_name }}" == "push" ]; then
+            VERSION=$(git describe --abbrev=0 --tags)
+          else
+            VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\///")
+          fi
+          echo "${VERSION}" 
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
         id: fetch-version
 
