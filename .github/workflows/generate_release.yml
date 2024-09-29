@@ -24,7 +24,7 @@ jobs:
       - name: Fetch version
         run: |
           if [ "${{ github.event_name }}" == "push" ]; then
-            git describe --abbrev=0 --tags
+            VERSION=$(curl -s "https://api.github.com/repos/sukhorukovmv/ansible-role-java/tags" | jq -r '.[0].name')
             echo "test if"
             echo "${VERSION}"
           else
