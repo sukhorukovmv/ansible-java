@@ -30,6 +30,7 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
 
+
       - name: Fetch version
         run: |
           if [ "${{ github.event.workflow_run.event }}" == "push" ]; then
