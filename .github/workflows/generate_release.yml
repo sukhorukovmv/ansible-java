@@ -2,14 +2,6 @@
 name: Generate Release
 
 on:
-  # pull_request:
-  #   branches:
-  #     - master
-  #   types:
-  #     - closed
-  # push:
-  #   branches:
-  #     - master
   workflow_run:
     workflows: ["CI"]
     types: 
@@ -34,7 +26,6 @@ jobs:
         uses: actions/checkout@v4
 
 
-
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -50,7 +41,7 @@ jobs:
             NEW_PATCH=$((PATCH + 1))
             VERSION=$(printf "%d.%d.%d" $MAJOR $MINOR $NEW_PATCH)
           else
-            VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\///")
+            VERSION=$(echo "${{ github.event.workflow_run.head_branch }}" | sed "s/release\\///")
           fi
           echo "${VERSION}" 
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
