@@ -35,7 +35,7 @@ jobs:
 
       - name: Fetch version
         run: |
-          echo "${{ github.event_name }}"
+          echo "${{ github }}"
           if [ "${{ github.event_name }}" == "push" ]; then
             LATEST_TAG=$(curl -s "https://api.github.com/repos/sukhorukovmv/ansible-role-java/tags" | jq -r '.[0].name')
             MAJOR=$(echo ${LATEST_TAG} | cut -d'.' -f1)
