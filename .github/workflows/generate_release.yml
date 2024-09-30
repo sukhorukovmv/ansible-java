@@ -2,14 +2,6 @@
 name: Generate Release
 
 on:
-  # pull_request:
-  #   branches:
-  #     - master
-  #   types:
-  #     - closed
-  # push:
-  #   branches:
-  #     - master
   workflow_run:
     workflows: ["CI"]
     types: 
@@ -23,20 +15,21 @@ on:
       branches:
         - master
 
-
 jobs:
   generate_release:
     name: Release
-    # if: contains(github.event.pull_request.head.ref, 'release/') && github.event.pull_request.merged == true || github.event_name == 'push'
+    if: contains(github.event.workflow_run.head_branch, 'release/') && github.event.workflow_run.merged == true || github.event.workflow_run.event == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+
 
       - name: Fetch version
         run: |
@@ -48,7 +41,7 @@ jobs:
             NEW_PATCH=$((PATCH + 1))
             VERSION=$(printf "%d.%d.%d" $MAJOR $MINOR $NEW_PATCH)
           else
-            VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\///")
+            VERSION=$(echo "${{ github.event.workflow_run.head_branch }}" | sed "s/release\\///")
           fi
           echo "${VERSION}" 
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
