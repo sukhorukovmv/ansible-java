@@ -15,6 +15,7 @@ jobs:
     uses: ./.github/workflows/ci.yml
   generate_release:
     name: Release
+    needs: CI
     if: contains(github.event.pull_request.head.ref, 'release/') && github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
