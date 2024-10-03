@@ -9,6 +9,7 @@ jobs:
   CI:
     uses: ./.github/workflows/ci.yml
     secrets: inherit
+
   generate_release:
     name: Generate Release
     needs: CI
