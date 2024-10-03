@@ -5,28 +5,28 @@ on:
   workflow_call:
 
 jobs:
-  # lint:
-  #   name: Lint
-  #   runs-on: ubuntu-24.04
-  #   steps:
-  #     - name: Check out the codebase
-  #       uses: actions/checkout@v4
-  #
-  #     - name: Set up Python 3
-  #       uses: actions/setup-python@v5
-  #       with:
-  #         python-version: '3.12.5'
-  #
-  #     - name: Install test dependencies
-  #       run: pip3 install yamllint ansible-lint
-  #
-  #     - name: Yamllint
-  #       run: |
-  #         yamllint .
-  #
-  #     - name: Ansible-lint
-  #       run: |
-  #         ansible-lint .
+  lint:
+    name: Lint
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out the codebase
+        uses: actions/checkout@v4
+  
+      - name: Set up Python 3
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.5'
+  
+      - name: Install test dependencies
+        run: pip3 install yamllint ansible-lint
+  
+      - name: Yamllint
+        run: |
+          yamllint .
+  
+      - name: Ansible-lint
+        run: |
+          ansible-lint .
 
   molecule:
     name: Molecule
