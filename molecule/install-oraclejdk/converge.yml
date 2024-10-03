@@ -7,7 +7,7 @@
     java_oracle_jdk_install: true
     java_version: 8
     java_oracle_jdk_version: "1.{{ java_version }}.0_221"
-    java_googledrive_apikey: "{{lookup('env','JAVA_GOOGLEDRIVE_APIKEY')}"
+    # java_googledrive_apikey: "{{lookup('env','JAVA_GOOGLEDRIVE_APIKEY')}"
     java_oracle_jdk_url: "https://www.googleapis.com/drive/v3/files/1xiX2psULjHYBKf88HsVH5PsUcuJEdodU?alt=media&key={{ java_googledrive_apikey }}"
 
   pre_tasks:

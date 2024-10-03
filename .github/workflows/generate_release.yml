@@ -1,6 +1,6 @@
 ---
 name: Generate Release
-on:
+'on':
   pull_request:
     branches:
       - master
@@ -35,10 +35,10 @@ jobs:
           else
             VERSION=$(echo "${GITHUB_HEAD_REF}" | sed "s/release\\///")
           fi
-          echo "${VERSION}" 
+          echo "${VERSION}"
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
         id: fetch-version
-      
+
       - name: Generate release notes
         uses: softprops/action-gh-release@v2
         with:
