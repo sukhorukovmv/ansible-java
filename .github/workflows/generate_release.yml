@@ -13,8 +13,7 @@ name: Generate Release
 jobs:
   CI:
     uses: ./.github/workflows/ci.yml
-    env:
-      JAVA_GOOGLEDRIVE_APIKEY:  ${{ secrets.JAVA_GOOGLEDRIVE_APIKEY }}
+    secrets: inherit
 
   generate_release:
     name: Generate Release
